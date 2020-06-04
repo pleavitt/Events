@@ -10,17 +10,7 @@ namespace Dynamic.Application.IntegrationTests.Events.Queries
   public class GetEventsTests : TestBase
   {
     [Test]
-    public async Task ShouldIncludePriorityLevels()
-    {
-      var query = new GetEventsQuery();
-
-      var result = await SendAsync(query);
-
-      result.Should().NotBeEmpty();
-    }
-
-    [Test]
-    public async Task ShouldGetAllListsAndItems()
+    public async Task ShouldGetAllEvents()
     {
       var query = new GetEventsQuery();
 
