@@ -3,6 +3,7 @@ using Dynamic.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace Dynamic.Infrastructure.Persistence
 {
@@ -39,8 +40,33 @@ namespace Dynamic.Infrastructure.Persistence
                     }
                 });
 
-                await context.SaveChangesAsync();
             }
+            if (!context.Events.Any()){
+                context.Events.Add(new Event 
+                {
+                    Name = "State of Origin",
+                    TimeStart = DateTime.Today,
+                    Capacity = 50000,
+                    LocationStart = "Suncorp Stadium",
+                });
+
+                context.Events.Add(new Event 
+                {
+                    Name = "Boat Cruise",
+                    TimeStart = DateTime.Parse("5/1/2021 8:30:52 AM"),
+                    Capacity = 100,
+                    LocationStart = "Big Boat",
+                });
+
+                context.Events.Add(new Event 
+                {
+                    Name = "Catalina Wine Mixer",
+                    TimeStart = DateTime.Parse("10/10/2020 8:30:52 AM"),
+                    Capacity = 50,
+                    LocationStart = "Napa Valley",
+                });
+            }
+            await context.SaveChangesAsync();
         }
     }
 }

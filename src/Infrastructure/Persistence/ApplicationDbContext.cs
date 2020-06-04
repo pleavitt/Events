@@ -33,6 +33,7 @@ namespace Dynamic.Infrastructure.Persistence
         public DbSet<TodoList> TodoLists { get; set; }
 
         public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<Event> Events { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

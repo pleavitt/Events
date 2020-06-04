@@ -10,6 +10,7 @@ namespace Dynamic.Application.Common.Interfaces
         DbSet<TodoList> TodoLists { get; set; }
 
         DbSet<TodoItem> TodoItems { get; set; }
+        DbSet<Event> Events { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

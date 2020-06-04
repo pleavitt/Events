@@ -19,6 +19,7 @@ namespace Dynamic.WebUI
 {
     public class Startup
     {
+        private const string AllowAllOriginsPolicy = "AllowAllOriginsPolicy";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -35,6 +36,9 @@ namespace Dynamic.WebUI
             services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             services.AddHttpContextAccessor();
+
+            services.AddCors();
+
 
             services.AddHealthChecks()
                 .AddDbContextCheck<ApplicationDbContext>();
@@ -101,6 +105,11 @@ namespace Dynamic.WebUI
             });
 
             app.UseRouting();
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
 
             app.UseAuthentication();
             app.UseIdentityServer();

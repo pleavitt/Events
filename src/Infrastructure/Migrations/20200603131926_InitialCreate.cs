@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Dynamic.Infrastructure.Persistence.Migrations
+namespace Dynamic.Infrastructure.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -61,6 +61,29 @@ namespace Dynamic.Infrastructure.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DeviceCodes", x => x.UserCode);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Events",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    Created = table.Column<DateTime>(nullable: false),
+                    LastModifiedBy = table.Column<string>(nullable: true),
+                    LastModified = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    LocationStart = table.Column<string>(nullable: true),
+                    LocationEnd = table.Column<string>(nullable: true),
+                    TimeStart = table.Column<DateTime>(nullable: false),
+                    TimeEnd = table.Column<DateTime>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Capacity = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Events", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -317,6 +340,9 @@ namespace Dynamic.Infrastructure.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "DeviceCodes");
+
+            migrationBuilder.DropTable(
+                name: "Events");
 
             migrationBuilder.DropTable(
                 name: "PersistedGrants");
