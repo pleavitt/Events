@@ -2,26 +2,30 @@
 using Dynamic.Application.Common.Mappings;
 using Dynamic.Domain.Entities;
 using System.Collections.Generic;
+using Dynamic.Application.Attendees;
 
 namespace Dynamic.Application.Events.Queries.GetEvents
 {
-    public class EventDto : IMapFrom<Event>
-{
-        public int Id { get; set; }
+  public class EventDto : IMapFrom<Event>
+  {
+    public int Id { get; set; }
 
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public string LocationStart { get; set; }
+    public string LocationStart { get; set; }
 
-        public string LocationEnd { get; set; }
+    public string LocationEnd { get; set; }
 
-        public DateTime TimeStart { get; set; }
+    public DateTime TimeStart { get; set; }
 
-        public DateTime? TimeEnd { get; set; }
+    public DateTime? TimeEnd { get; set; }
 
-        public string Description { get; set; }
+    public string Description { get; set; }
 
-        public int Capacity { get; set; }
+    public int Capacity { get; set; }
 
-}
+    public IList<AttendeeDto> Attendees { get; set; }
+
+    public int attendance { get; set; }
+  }
 }

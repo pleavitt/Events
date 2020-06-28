@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 
 namespace Dynamic.Application.Common.Interfaces
 {
-    public interface IApplicationDbContext
-    {
-        DbSet<TodoList> TodoLists { get; set; }
+  public interface IApplicationDbContext
+  {
+    DbSet<TodoList> TodoLists { get; set; }
 
-        DbSet<TodoItem> TodoItems { get; set; }
-        DbSet<Event> Events { get; set; }
+    DbSet<TodoItem> TodoItems { get; set; }
+    DbSet<Event> Events { get; set; }
+    DbSet<Contact> Contacts { get; set; }
 
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-    }
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+  }
 }
